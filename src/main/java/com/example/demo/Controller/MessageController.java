@@ -1,6 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Entity.Message;
+import com.example.demo.Entity.MessageEntity;
 import com.example.demo.Service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +18,19 @@ public class MessageController {
     }
 
 
+    // localhost:8181/messages
+
+
+
+
+
     @GetMapping("/messages")
-    private List<Message> getAllMessages() {
+    private List<MessageEntity> getAllMessages() {
         return messageService.getAllMessages();
     }
 
     @GetMapping("/messages/{id}")
-    private Message getMessage(@PathVariable("id") int id) {
+    private MessageEntity getMessage(@PathVariable("id") int id) {
         return messageService.getMessageById(id);
     }
 
@@ -34,8 +40,8 @@ public class MessageController {
     }
 
     @PostMapping("/messages")
-    private int saveMessage(@RequestBody Message message) {
-        messageService.saveOrUpdate(message);
-        return message.getId();
+    private int saveMessage(@RequestBody MessageEntity messageEntity) {
+        messageService.saveOrUpdate(messageEntity);
+        return messageEntity.getId();
     }
 }

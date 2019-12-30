@@ -5,14 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Message {
+public class MessageEntity {
 
     @Id
     @GeneratedValue
     private int id;
 
     private String message;
-
 
 
     public int getId() {
