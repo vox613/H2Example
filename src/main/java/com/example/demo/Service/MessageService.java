@@ -1,9 +1,9 @@
 package com.example.demo.Service;
 
+import com.example.demo.Entity.Message;
 import com.example.demo.Repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.demo.Entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,14 @@ import java.util.List;
 @Service
 public class MessageService {
 
-    @Autowired
     MessageRepository messageRepository;
+
+    @Autowired
+    public MessageService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
+
+
 
     public List<Message> getAllMessages() {
         List<Message> messages = new ArrayList<>();
@@ -22,7 +28,7 @@ public class MessageService {
     }
 
     public Message getMessageById(int id) {
-        return messageRepository.findById(id).get();
+        return messageRepository.findById(id).orElse(new Message());
     }
 
     public void saveOrUpdate(Message message) {

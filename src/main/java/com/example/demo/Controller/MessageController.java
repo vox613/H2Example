@@ -10,8 +10,13 @@ import java.util.List;
 @RestController
 public class MessageController {
 
+    private MessageService messageService;
+
     @Autowired
-    MessageService messageService;
+    public MessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
 
     @GetMapping("/messages")
     private List<Message> getAllMessages() {

@@ -10,7 +10,10 @@ public class Message {
     @Id
     @GeneratedValue
     private int id;
+
     private String message;
+
+
 
     public int getId() {
         return id;
